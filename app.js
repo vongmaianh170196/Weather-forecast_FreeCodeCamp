@@ -5,40 +5,50 @@ API: https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139
 var currlat=0;
 var currlon = 0;
 var currweather;
+var iconcode;
+var description;
 $getweather = $('.getweather');
-$getweather.click(GetLocation);
+$(document).ready(function(){
+   $getweather.click(GetLocation); 
+});
+
 /*Get the longitute and latitude of current location*/
 function GetLocation (){
   if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
     currlat =  position.coords.latitude;
     currlon = position.coords.longitude;
-/*AJAX*/
+/*REQUEST TO API*/
 
     $.ajax({
         url: 'http://api.openweathermap.org/data/2.5/weather?appid=f5aad87259b289ac34687514827b8dfb' + '&lat=' + currlat + '&lon=' + currlon,
-        data: data,
+        data: '',
+        cache: false,
         success: function(data){
-            currweather += '<ul>';
+/** Get temperature data */ 
+           
             $.each(data, function(i, main){
-                currweather += '<li><p>Weather: ' + data.main.temp + '</li>';
+                var tempweather = data.main.temp ;
+                currweather = tempweather - 273.15;
+
             });
-            currweather+= '</ul>';
+/** End get temperature data */
+
+/** Show icon weather depending on weather */
+            $.each(data, function(i, weather){
+                iconcode = data.weather[0].icon;
+                description = data.weather[0].description;
+
+            });
+ /** End show icon weather depending on weather */
             $('#data').html(currweather);
+            $("#icon").html("<img src='http://openweathermap.org/img/w/" + iconcode + ".png'>");
+            $('#description').html(description);
         }
-
     })
-
-
-
-
-/*ajax******/
+/*END REQUEST*/
     
   });
-  
-}
-  else {
-    alert('Sorry! We could not access your location longitute')
   }
 };
 /*End Get the longitute and latitude of current location*/
