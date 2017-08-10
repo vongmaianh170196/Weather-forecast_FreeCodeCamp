@@ -1,0 +1,39 @@
+/*
+EDITED BY ANH VO ON 10/02/2017
+*/
+
+body{font-family: 'Titillium Web', sans-serif;
+  text-align: center;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/Helkivad_%C3%B6%C3%B6pilved_Kuresoo_kohal.jpg');
+  /*responsive background image*/
+  background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+  /*responsive background image*/
+}
+.content{
+  background-color: rgba(0, 102, 255,0.1);
+  margin: 10% 5%;
+  padding: 5% 25% ;
+}
+ .getweather{
+  font-size: 2.5rem;
+   background-color: transparent;
+   color: #c6d9eb;
+   border: none;
+}
+#data{
+  font-size: 3.5rem;
+  color: #336699 ;
+  text-shadow: 1px 1px rgb(0, 0, 102);
+}
+#description{
+  font-size: 3rem;
+  color: #558ec3 ;
+  text-shadow: 2px 2px rgb(20, 39, 57);
+}
+#icon img{
+  height: 70px;
+  width: 70px;
+}

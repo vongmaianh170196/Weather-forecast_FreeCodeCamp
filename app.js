@@ -7,17 +7,16 @@ var currlon = 0;
 var currweather;
 var iconcode;
 var description;
-$getweather = $('.getweather');
 $(document).ready(function(){
-   $getweather.click(GetLocation); 
-});
+
 
 /*Get the longitute and latitude of current location*/
-function GetLocation (){
   if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
     currlat =  position.coords.latitude;
     currlon = position.coords.longitude;
+/*End Get the longitute and latitude of current location*/
+
 /*REQUEST TO API*/
 
     $.ajax({
@@ -29,7 +28,7 @@ function GetLocation (){
            
             $.each(data, function(i, main){
                 var tempweather = data.main.temp ;
-                currweather = tempweather - 273.15;
+                currweather = tempweather - 273.15 + '&#176';
 
             });
 /** End get temperature data */
@@ -37,7 +36,7 @@ function GetLocation (){
 /** Show icon weather depending on weather */
             $.each(data, function(i, weather){
                 iconcode = data.weather[0].icon;
-                description = data.weather[0].description;
+                description = data.weather[0].main;
 
             });
  /** End show icon weather depending on weather */
@@ -45,11 +44,8 @@ function GetLocation (){
             $("#icon").html("<img src='http://openweathermap.org/img/w/" + iconcode + ".png'>");
             $('#description').html(description);
         }
-    })
+    });
 /*END REQUEST*/
-    
-  });
+  })
   }
-};
-/*End Get the longitute and latitude of current location*/
-
+});/***END READY */
