@@ -17,10 +17,10 @@ body{font-family: 'Titillium Web', sans-serif;
   margin: 10% 5%;
   padding: 5% 25% ;
 }
- .getweather{
+ #getweather{
   font-size: 2.5rem;
    background-color: transparent;
-   color: #c6d9eb;
+   color: #6899ca;
    border: none;
 }
 #data{

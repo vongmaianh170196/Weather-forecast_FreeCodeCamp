@@ -7,6 +7,7 @@ var currlon = 0;
 var currweather;
 var iconcode;
 var description;
+var currlocation;
 $(document).ready(function(){
 
 
@@ -24,12 +25,20 @@ $(document).ready(function(){
         data: '',
         cache: false,
         success: function(data){
+/** Get location data */ 
+           
+            $.each(data, function(i, sys){
+                var templocation = data.name ;
+                currlocation = 'Weather forecast in ' + templocation + ' today'  ;
+            });
+/** End get location data */
+
 /** Get temperature data */ 
            
             $.each(data, function(i, main){
                 var tempweather = data.main.temp ;
-                currweather = tempweather - 273.15 + '&#176';
-
+                currweather = tempweather - 273.15 + '&#176C | '  ;
+                currweather +=  Math.round(9/5*tempweather - 9/5*273 + 32) + '&#176F';
             });
 /** End get temperature data */
 
@@ -40,6 +49,7 @@ $(document).ready(function(){
 
             });
  /** End show icon weather depending on weather */
+            $('#getweather').html(currlocation);
             $('#data').html(currweather);
             $("#icon").html("<img src='http://openweathermap.org/img/w/" + iconcode + ".png'>");
             $('#description').html(description);
