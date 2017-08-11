@@ -21,7 +21,7 @@ $(document).ready(function(){
 /*REQUEST TO API*/
 
     $.ajax({
-        url: 'http://api.openweathermap.org/data/2.5/weather?appid=f5aad87259b289ac34687514827b8dfb' + '&lat=' + currlat + '&lon=' + currlon,
+        url: 'https://api.openweathermap.org/data/2.5/weather?appid=f5aad87259b289ac34687514827b8dfb' + '&lat=' + currlat + '&lon=' + currlon,
         data: '',
         cache: false,
         success: function(data){
